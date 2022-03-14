@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1 class="text-center my-3">Accueil de l'entreprise</h1>
+
+    <h3 class="text-center my-3">Tous les employés</h3>
+
+    <div class="row">
+        <div class="col-12">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nom entier</th>
+                        <th>Date de naissance</th>
+                        <th>Email</th>
+                        <th>Service</th>
+                        <th>Salaire</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for employe in employes %}
+                        <tr>
+                            <td><a href="{{ path('show_employe', {'id': employe.id}) }}">{{ employe.fullname }}</a></td>
+                            <td>{{ employe.birthdate | date('d/m/Y') }}</td>
+                            <td>{{ employe.email }}</td>
+                            <td>{{ employe.service }}</td>
+                            <td>{{ employe.salaire }} €</td>
+                            <td>
+                                <a href="{{ path('update_employe', {'id': employe.id}) }}" class="btn btn-info" title="Modifier un employé"><i class="fa fa-edit"></i></a> |
+                                <a href="{{ path('delete_employe', {'id': employe.id}) }}" class="btn btn-danger" title="Supprimer un employé"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+{% endblock %}

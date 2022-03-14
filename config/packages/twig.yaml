@@ -1,5 +1,7 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
+    # L'option "form_themes" vous permet de renseigner un layout général pour les form
+    form_themes: [ 'bootstrap_5_layout.html.twig' ]
 
 when@test:
     twig:
