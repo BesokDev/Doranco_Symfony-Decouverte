@@ -46,7 +46,7 @@ class Employe
 
     /**
      * @ORM\ManyToOne(targetEntity=Service::class, inversedBy="employes")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $service;
 

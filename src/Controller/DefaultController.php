@@ -24,7 +24,7 @@ class DefaultController extends AbstractController
 
     // les fonctions sont appelées "action"
     /**
-     * @Route("/accueil", name="show_home", methods={"GET"})
+     * @Route("/", name="show_home", methods={"GET"})
      */
     public function home(EntityManagerInterface $entityManager): Response
     {
