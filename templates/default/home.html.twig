@@ -27,7 +27,7 @@
                             <td><a href="{{ path('show_employe', {'id': employe.id}) }}">{{ employe.fullname }}</a></td>
                             <td>{{ employe.birthdate | date('d/m/Y') }}</td>
                             <td>{{ employe.email }}</td>
-                            <td>{{ employe.service }}</td>
+                            <td>{{ employe.service.name }}</td>
                             <td>{{ employe.salaire }} €</td>
                             <td>
                                 <a href="{{ path('update_employe', {'id': employe.id}) }}" class="btn btn-info" title="Modifier un employé"><i class="fa fa-edit"></i></a> |
