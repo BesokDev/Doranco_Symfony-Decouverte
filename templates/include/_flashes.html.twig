@@ -1,0 +1,19 @@
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+
+        <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+            {% if label is same as 'success' %}
+                <span class="alert-inner--icon"><i class="fa fa-thumbs-up"></i></span>
+            {% elseif label is same as 'warning' %}
+                <span class="alert-inner--icon"><i class="fa fa-exclamation-triangle"></i></span>
+            {% else %}
+                <span class="alert-inner--icon"><i class="fa fa-thumbs-down"></i></span>
+            {% endif %}
+
+            <span class="alert-inner--text">
+                <strong>{{ label is same as 'warning' ? 'Attention' : label | capitalize }} : </strong> {{ message | raw }}
+            </span>
+        </div>
+
+    {% endfor %}
+{% endfor %}
