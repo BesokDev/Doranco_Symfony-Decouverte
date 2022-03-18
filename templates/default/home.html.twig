@@ -32,6 +32,7 @@
 
                     {% for candidat in candidats %}
                         {% if candidat.archivedAt is not defined or candidat.archivedAt is null  %}
+                            
                             <tr>
                                 <td>{{ candidat.prenom }}</td>
                                 <td>{{ candidat.nom }}</td>
