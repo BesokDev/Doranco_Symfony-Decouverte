@@ -20,28 +20,30 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Prenom</th>
+                        <th>Prénom</th>
                         <th>Nom</th>
                         <th>Email</th>
                         <th>Age</th>
-                        <th>Age</th>
-{#                        <th>Actions</th>#}
+                        <th>Archivé le </th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
 
                     {% for candidat in candidats %}
-                        <tr>
-                            <td>{{ candidat.prenom }}</td>
-                            <td>{{ candidat.nom }}</td>
-                            <td>{{ candidat.email }}</td>
-                            <td>{{ candidat.age  }}</td>
-                            <td>{{ candidat.candidatedAt | date('d/m/Y') }} €</td>
-{#                            <td>#}
-{#                                <a href="{{ path('update_candidat', {'id': candidat.id}) }}" class="btn btn-info" title="Modifier un employé"><i class="fa fa-edit"></i></a> |#}
-{#                                <a href="{{ path('delete_candidat', {'id': candidat.id}) }}" class="btn btn-danger" title="Supprimer un employé"><i class="fa fa-trash"></i></a>#}
-{#                            </td>#}
-                        </tr>
+                        {% if candidat.archivedAt is not defined or candidat.archivedAt is null  %}
+                            <tr>
+                                <td>{{ candidat.prenom }}</td>
+                                <td>{{ candidat.nom }}</td>
+                                <td>{{ candidat.email }}</td>
+                                <td>{{ candidat.age  }}</td>
+                                <td></td>
+                                <td>
+                                    <a href="#" class="btn btn-danger" onclick="return confirm('Vous devez créer la fonction de softDelete avant ! \n\n (Voulez vous archivez ce candidat ? )')" title="Archiver un candidat"><i class="fa fa-trash"></i></a>
+                                </td>
+                            </tr>
+
+                    {% endif %}
                     {% endfor %}
 
                 </tbody>
@@ -50,30 +52,38 @@
         </div>
 {# ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// #}
         <div class="col-6">
-
-            <h3 class="text-center my-3">Toutes les entreprises</h3>
+            <h3 class="text-center my-3">Tous les candidats archivés</h3>
 
             <table class="table">
                 <thead>
                 <tr>
-                    <th>ai</th>
-                    <th>fd</th>
-                    <th>dfdf</th>
-                    <th>dfdf</th>
-                    <th>dfdf</th>
+                    <th>Prénom</th>
+                    <th>Nom</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Archivé le</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>fhjdfd</td>
-                    <td>fgf</td>
-                    <td>dfdgd</td>
-                    <td>fgf</td>
-                    <td>rer</td>
-                </tr>
+
+                {% for candidat in candidats %}
+                    {% if candidat.archivedAt is defined and candidat.archivedAt is not null  %}
+
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                    {% endif %}
+                {% endfor %}
+
                 </tbody>
             </table>
         </div>
+
     </div>
 
 {% endblock %}

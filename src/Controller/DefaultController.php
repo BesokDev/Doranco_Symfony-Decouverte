@@ -18,12 +18,13 @@ class DefaultController extends AbstractController
     public function home(EntityManagerInterface $entityManager): Response
     {
 
+        # Adaptez ici cette ligne pour affichez les candidats non archivés. (après le softDelete)
         $candidats = $entityManager->getRepository(Candidat::class)->findAll();
 
         return $this->render('default/home.html.twig', [
             'candidats' => $candidats,
         ]);
-    }
+    } // END home()
 
     /**
      * @Route("/creer-candidat", name="create_candidat", methods={"GET|POST"})
@@ -31,20 +32,20 @@ class DefaultController extends AbstractController
     public function createCandidat(Request $request, EntityManagerInterface $entityManager): Response
     {
 
-//{# ==========!!!========== CODE A EFFACER AVANT DE COMMENCER =========!!!========= #}//
-        if( !file_exists($this->getParameter('form_dir') . '/CandidatFormType.php')) {
+//{# ==========__// ↓↓↓↓↓↓↓↓↓ \\__========== !!! ↓ CODE A EFFACER AVANT DE COMMENCER ↓ !!! =========__// ↓↓↓↓↓↓↓↓↓ \\__========= #}//
+        if( file_exists($this->getParameter('form_dir') . '/CandidatFormType.php') === false) {
             $this->addFlash('warning', 'Il vous faut faire le formulaire <strong>CandidatFormType</strong> en ligne de commande, <strong>puis</strong> faire son traitement dans le <strong>DefaultController</strong>. À vos claviers ! Bon courage');
             return $this->redirectToRoute('show_home');
         }
         return $this->redirectToRoute('show_home');
-//{# ==========!!!========== CODE A EFFACER AVANT DE COMMENCER =========!!!========= #}//
+//{# ==========__// ↑↑↑↑↑↑↑↑↑ \\__========== !!! ↑ CODE A EFFACER AVANT DE COMMENCER ↑ !!! =========__// ↑↑↑↑↑↑↑↑↑ \\__========= #}//
 
 
 
-       # Faire le traitement ici (après avoir effacé le code ci-dessus
+       # Faire le traitement ici (après avoir effacé le code ci-dessus ↑↑↑)
 
 
 
-    } // END function
+    } # END createCandidat()
 
-} // END class
+} # END DefaultController

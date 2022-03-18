@@ -38,9 +38,9 @@ class Candidat
     private $age;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="string", length=35)
      */
-    private $candidatedAt;
+    private $profession;
 
     public function getId(): ?int
     {
@@ -95,14 +95,14 @@ class Candidat
         return $this;
     }
 
-    public function getCandidatedAt(): ?\DateTimeInterface
+    public function getProfession(): ?string
     {
-        return $this->candidatedAt;
+        return $this->profession;
     }
 
-    public function setCandidatedAt(?\DateTimeInterface $candidatedAt): self
+    public function setProfession(string $profession): self
     {
-        $this->candidatedAt = $candidatedAt;
+        $this->profession = $profession;
 
         return $this;
     }
