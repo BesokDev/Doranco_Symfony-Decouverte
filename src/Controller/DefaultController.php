@@ -18,11 +18,8 @@ class DefaultController extends AbstractController
     public function home(EntityManagerInterface $entityManager): Response
     {
 
-        # Adaptez ici cette ligne pour affichez les candidats non archivés. (après le softDelete)
-        $candidats = $entityManager->getRepository(Candidat::class)->findAll();
-
         return $this->render('default/home.html.twig', [
-            'candidats' => $candidats,
+
         ]);
     } // END home()
 
